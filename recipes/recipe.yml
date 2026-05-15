@@ -28,7 +28,6 @@ modules:
         - https://cli.github.com/packages/rpm/gh-cli.repo # github cli
         - https://kubecolor.github.io/packages/rpm/kubecolor.repo # kubecolor
 
-      nonfree: negativo17
     install:
       packages:
         - adw-gtk3-theme
@@ -42,7 +41,6 @@ modules:
         - eza
         - fastfetch
         - fd-find
-        - ffmpeg
         - ffmpegthumbnailer
         - fish
         - fzf

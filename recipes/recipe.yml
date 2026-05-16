@@ -24,10 +24,12 @@ modules:
         - atim/starship
         - lihaohong/yazi
         - scottames/ghostty
+      keys:
+        - https://cli.github.com/packages/githubcli-archive-keyring.asc # github cli
+
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo # github cli
         - https://kubecolor.github.io/packages/rpm/kubecolor.repo # kubecolor
-      # nonfree: rpmfusion
 
     install:
       packages:
@@ -212,5 +214,24 @@ modules:
           - org.gnome.clocks
           - org.gnome.font-viewer
 
+  - type: dnf
+    repos:
+      keys:
+        - https://downloads.1password.com/linux/keys/1password.asc # 1password
+        - https://packages.microsoft.com/keys/microsoft.asc # vscode
+      files:
+        - 1password.repo # 1password
+        - vscode.repo # vscode
+      nonfree: rpmfusion
+
+    install:
+      packages:
+        - 1password
+        - code
+        - discord
+        - firefox
+        - firefox-langpacks
+        - google-chrome-stable
+        - steam
 
   - type: signing

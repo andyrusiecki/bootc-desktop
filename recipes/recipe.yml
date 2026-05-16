@@ -79,10 +79,10 @@ modules:
 
         # rpmfusion
         - intel-media-driver
-        - libheif-freeworld
+        #- libheif-freeworld
         # - mesa-va-drivers-freeworld
         # - mesa-va-drivers-freeworld.i686
-        - pipewire-codec-aptx
+        #- pipewire-codec-aptx
 
     remove:
       packages:

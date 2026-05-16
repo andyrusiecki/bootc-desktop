@@ -222,7 +222,6 @@ modules:
       files:
         - 1password.repo # 1password
         - vscode.repo # vscode
-      nonfree: rpmfusion
 
     install:
       packages:

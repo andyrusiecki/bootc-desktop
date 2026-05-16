@@ -27,7 +27,7 @@ modules:
       files:
         - https://cli.github.com/packages/rpm/gh-cli.repo # github cli
         - https://kubecolor.github.io/packages/rpm/kubecolor.repo # kubecolor
-      nonfree: rpmfusion
+      # nonfree: rpmfusion
 
     install:
       packages:
@@ -75,11 +75,11 @@ modules:
         - yazi
 
         # rpmfusion
-        - intel-media-driver
+        # - intel-media-driver
         #- libheif-freeworld
         # - mesa-va-drivers-freeworld
         # - mesa-va-drivers-freeworld.i686
-        #- pipewire-codec-aptx
+        # - pipewire-codec-aptx
 
     remove:
       packages:

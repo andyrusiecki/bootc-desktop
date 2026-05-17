@@ -24,21 +24,31 @@ modules:
         - atim/starship
         - lihaohong/yazi
         - scottames/ghostty
+
       keys:
+        - https://downloads.1password.com/linux/keys/1password.asc # 1password
         - https://cli.github.com/packages/githubcli-archive-keyring.asc # github cli
+        - https://dl.google.com/linux/linux_signing_key.pub # google chrome
+        - https://packages.microsoft.com/keys/microsoft.asc # vscode
 
       files:
+        - 1password.repo # 1password
         - https://cli.github.com/packages/rpm/gh-cli.repo # github cli
+        - google-chrome.repo # google chrome
         - https://kubecolor.github.io/packages/rpm/kubecolor.repo # kubecolor
+        - vscode.repo # vscode
 
     install:
       packages:
+        - 1password
         - adw-gtk3-theme
         - awscli2
         - bat
         - btop
         - cabextract
         - cargo
+        - code
+        - https://discord.com/api/download?platform=linux&format=rpm # discord
         - distrobox
         - du-dust
         - eza
@@ -50,9 +60,10 @@ modules:
         - git-delta
         - gnome-tweaks
         - golang
-        - helix
+        - google-chrome-stable
         - kubernetes1.33-client
         - make
+        - neovim
         - nodejs
         - nodejs-npm
         - podman-compose
@@ -60,6 +71,7 @@ modules:
         - ripgrep
         - rust
         - rust-src
+        - steam
         - tailscale
         - unrar
         - wl-clipboard
@@ -86,8 +98,6 @@ modules:
     remove:
       packages:
         - toolbox
-        - firefox
-        - firefox-langpacks
 
     # replace:
     #   - from-repo: fedora-multimedia
@@ -156,19 +166,14 @@ modules:
         install:
           # Added applications
           - com.dec05eba.gpu_screen_recorder
-          #- com.discordapp.Discord
           - com.getpostman.Postman
           - com.github.marhkb.Pods
           - com.github.mtkennerly.ludusavi
           - com.github.tchx84.Flatseal
-          #- com.google.Chrome
           - com.mattjakeman.ExtensionManager
           - com.nextcloud.desktopclient.nextcloud
-          #- com.onepassword.OnePassword
           - com.slack.Slack
           - com.spotify.Client
-          #- com.valvesoftware.Steam
-          #- com.visualstudio.code
           - dev.qwery.AddWater
           - io.github.Foldex.AdwSteamGtk
           - io.github.celluloid_player.Celluloid
@@ -176,17 +181,11 @@ modules:
           - it.mijorus.gearlever
           - md.obsidian.Obsidian
           - org.libreoffice.LibreOffice
-          #- org.mozilla.firefox
           - org.signal.Signal
           - us.zoom.Zoom
 
           # Added runtimes
-          - com.visualstudio.code.tool.podman
           - org.freedesktop.Platform.ffmpeg-full
-          - org.freedesktop.Sdk.Extension.golang
-          - org.freedesktop.Sdk.Extension.node24
-          - org.freedesktop.Sdk.Extension.rust-stable
-          - org.freedesktop.Sdk.Extension.typescript
           - org.gtk.Gtk3theme.adw-gtk3
           - org.gtk.Gtk3theme.adw-gtk3-dark
 
@@ -213,26 +212,5 @@ modules:
           - org.gnome.baobab
           - org.gnome.clocks
           - org.gnome.font-viewer
-
-  - type: dnf
-    repos:
-      keys:
-        - https://downloads.1password.com/linux/keys/1password.asc # 1password
-        - https://dl.google.com/linux/linux_signing_key.pub # google chrome
-        - https://packages.microsoft.com/keys/microsoft.asc # vscode
-      files:
-        - 1password.repo # 1password
-        - google-chrome.repo # google chrome
-        - vscode.repo # vscode
-
-    install:
-      packages:
-        - 1password
-        - code
-        - https://discord.com/api/download?platform=linux&format=rpm # discord
-        - firefox
-        - firefox-langpacks
-        - google-chrome-stable
-        - steam
 
   - type: signing

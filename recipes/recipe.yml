@@ -202,8 +202,6 @@ modules:
           - org.gnome.Maps
           - org.gnome.NautilusPreviewer
           - org.gnome.Papers
-          - org.gnome.Platform
-          - org.gnome.Platform
           - org.gnome.Snapshot
           - org.gnome.TextEditor
           - org.gnome.Weather

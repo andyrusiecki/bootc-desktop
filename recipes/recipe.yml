@@ -33,6 +33,7 @@ modules:
 
       files:
         - 1password.repo # 1password
+        - claude-code.repo # claude code
         - https://cli.github.com/packages/rpm/gh-cli.repo # github cli
         - google-chrome.repo # google chrome
         - https://kubecolor.github.io/packages/rpm/kubecolor.repo # kubecolor
@@ -47,8 +48,10 @@ modules:
 
         # Development tools
         - cargo
+        - claude-code
         - code
         - git-delta
+        - git-lfs
         - golang
         - kubecolor
         - kubernetes1.33-client

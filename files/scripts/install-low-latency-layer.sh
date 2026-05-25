@@ -5,7 +5,6 @@ set -euo pipefail
 # ensure dependencies are installed
 dependencies=(
   cmake
-  gcc
   vulkan-headers
   vulkan-utility-libraries-devel
 )
@@ -28,6 +27,7 @@ cd $workdir
 git clone --depth 1 https://github.com/Korthos-Software/low_latency_layer.git
 cd low_latency_layer
 
+CMAKE_CXX_COMPILER=$(which gcc)
 cmake -B build ./
 cd ./build
 make install

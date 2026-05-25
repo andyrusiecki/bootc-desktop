@@ -2,37 +2,33 @@
 
 set -euo pipefail
 
-# ensure dependencies are installed
 dependencies=(
   cmake
+  gcc-c++
   vulkan-headers
+  vulkan-loader-devel
   vulkan-utility-libraries-devel
 )
 
-# check if dependencies are already installed, if not add them to the list of packages to cleanup after installation
-to_clean=()
-for dep in "${dependencies[@]}"; do
-  if ! rpm -q $dep &> /dev/null; then
-    echo "Installing dependency: $dep"
-    to_clean+=("$dep")
-  fi
-done
+root=$(mktemp -d)
 
-dnf install -y "${dependencies[@]}"
+dnf install --installroot=$root --use-host-config -y "${dependencies[@]}"
 
-# create working directory
-workdir=$(mktemp -d)
-cd $workdir
+chroot $root /bin/bash -c ""
 
-git clone --depth 1 https://github.com/Korthos-Software/low_latency_layer.git
+git clone --depth 1 https://github.com/Korthos-Software/low_latency_layer.git $root/low_latency_layer
 cd low_latency_layer
 
-CXX=$(which gcc)
-cmake -B build ./
-cd ./build
-make install
+# build in chroot
+chroot $root /bin/bash -c "cd /low_latency_layer && cmake -B build ./ && cd build && make install"
+
+# copy artifacts out of chroot
+cp $root/usr/local/lib64/libVkLayer_KORTHOS_LowLatency.so /usr/lib64/
+cp $root/usr/local/share/vulkan/implicit_layer.d/low_latency_layer.json /usr/share/vulkan/implicit_layer.d/
+
+sed -i 's/\/usr\/local/\/usr/g' /usr/share/vulkan/implicit_layer.d/low_latency_layer.json
+
+install -Dm644 $root/low_latency_layer/LICENSE -t /usr/share/licenses/VK_LAYER_KORTHOS_low_latency
 
 # cleanup
-dnf remove -y "${to_clean[@]}"
-
-rm -rf $workdir
+rm -rf $root

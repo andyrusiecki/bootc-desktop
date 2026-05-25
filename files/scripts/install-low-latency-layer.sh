@@ -5,6 +5,7 @@ set -euo pipefail
 # ensure dependencies are installed
 dependencies=(
   cmake
+  gcc
   vulkan-headers
   vulkan-utility-libraries-devel
 )

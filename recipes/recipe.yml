@@ -225,7 +225,8 @@ modules:
       copr:
         - bieszczaders/kernel-cachyos
     replace:
-      - packages:
+      - from-repo: copr:copr.fedorainfracloud.org:bieszczaders:kernel-cachyos
+        packages:
           old:
             - kernel
             - kernel-core

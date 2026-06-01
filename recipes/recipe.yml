@@ -101,6 +101,7 @@ modules:
 
         # Misc utilities
         - 1password
+        - 1password-cli
         - cabextract
         - chezmoi
         - nextcloud-client
